@@ -1,13 +1,51 @@
 package rent.model;
 
 public class HouseModel {
-	int id;
+	
+	public HouseModel() {
+		
+	}
+	
+	public HouseModel(String id, String deposit, String festiveMoney, String address, String timeToStation,
+			String structureAndDesign, String totalAsableArea, String numberOfYearsSinceConstruction, String floor,
+			String direction, String kindsOfHouse, String featuresAndEquipment, String detailsOfRooms, String texture,
+			String totalFloor, String yearsOfConstruction, String insurance, String parkingLot, String goIn,
+			String transactionForm, String condition, String totalNumberOfApartments, String updateDate,
+			String nextUpdateDate, String remark) {
+		this.id = id;
+		this.deposit = deposit;
+		this.festiveMoney = festiveMoney;
+		this.address = address;
+		this.timeToStation = timeToStation;
+		this.structureAndDesign = structureAndDesign;
+		this.totalAsableArea = totalAsableArea;
+		this.numberOfYearsSinceConstruction = numberOfYearsSinceConstruction;
+		this.floor = floor;
+		this.direction = direction;
+		kindsOfHouse = kindsOfHouse;
+		this.featuresAndEquipment = featuresAndEquipment;
+		this.detailsOfRooms = detailsOfRooms;
+		this.texture = texture;
+		this.totalFloor = totalFloor;
+		this.yearsOfConstruction = yearsOfConstruction;
+		this.insurance = insurance;
+		this.parkingLot = parkingLot;
+		this.goIn = goIn;
+		this.transactionForm = transactionForm;
+		this.condition = condition;
+		this.totalNumberOfApartments = totalNumberOfApartments;
+		this.updateDate = updateDate;
+		this.nextUpdateDate = nextUpdateDate;
+		this.remark = remark;
+	}
 
-	public int getId() {
+	String id;
+
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -84,11 +122,11 @@ public class HouseModel {
 	}
 
 	public String getKindsOfHouse() {
-		return KindsOfHouse;
+		return kindsOfHouse;
 	}
 
 	public void setKindsOfHouse(String kindsOfHouse) {
-		KindsOfHouse = kindsOfHouse;
+		kindsOfHouse = kindsOfHouse;
 	}
 
 	public String getFeaturesAndEquipment() {
@@ -221,7 +259,7 @@ public class HouseModel {
 	
 	String direction;
 	
-	String KindsOfHouse;
+	String kindsOfHouse;
 	
 	String featuresAndEquipment;
 	
@@ -257,11 +295,20 @@ public class HouseModel {
 				+ address + ", timeToStation=" + timeToStation + ", structureAndDesign=" + structureAndDesign
 				+ ", totalAsableArea=" + totalAsableArea + ", numberOfYearsSinceConstruction="
 				+ numberOfYearsSinceConstruction + ", floor=" + floor + ", direction=" + direction + ", KindsOfHouse="
-				+ KindsOfHouse + ", featuresAndEquipment=" + featuresAndEquipment + ", detailsOfRooms=" + detailsOfRooms
+				+ kindsOfHouse + ", featuresAndEquipment=" + featuresAndEquipment + ", detailsOfRooms=" + detailsOfRooms
 				+ ", texture=" + texture + ", totalFloor=" + totalFloor + ", yearsOfConstruction=" + yearsOfConstruction
 				+ ", insurance=" + insurance + ", parkingLot=" + parkingLot + ", goIn=" + goIn + ", transactionForm="
 				+ transactionForm + ", condition=" + condition + ", totalNumberOfApartments=" + totalNumberOfApartments
 				+ ", updateDate=" + updateDate + ", nextUpdateDate=" + nextUpdateDate + ", remark=" + remark				
 				+ "]";
+	}
+
+	public String[] toArrayString() {
+		return new String[] {this.id, this.deposit, this.festiveMoney, this.address, this.timeToStation,
+				this.structureAndDesign, this.totalAsableArea, this.numberOfYearsSinceConstruction, this.floor,
+				this.direction, this.kindsOfHouse, this.featuresAndEquipment, this.detailsOfRooms, this.texture,
+				this.totalFloor, this.yearsOfConstruction, this.insurance, this.parkingLot, this.goIn,
+				this.transactionForm, this.condition, this.totalNumberOfApartments, this.updateDate,
+				this.nextUpdateDate, this.remark};
 	}
 }
