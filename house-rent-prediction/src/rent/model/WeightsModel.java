@@ -1,10 +1,20 @@
 package rent.model;
 
 public class WeightsModel {
-	
+
+	double bias = 200;
+
+	public double getBias() {
+		return bias;
+	}
+
+	public void setBias(double bias) {
+		this.bias = bias;
+	}
+
 	double weightOfdeposit;
 
-	double weightOfFestiveMoney;
+	double weightOfKeyMoney;
 
 	double weightOfAddress;
 
@@ -12,7 +22,7 @@ public class WeightsModel {
 
 	double weightOfStructureAndDesign;
 
-	double weightOfTotalAsableArea;
+	double weightOfTotalUsableArea;
 
 	double weightOfNumberYears;
 
@@ -46,10 +56,10 @@ public class WeightsModel {
 
 	@Override
 	public String toString() {
-		return "WeightsModel [weightOfdeposit=" + weightOfdeposit + ", weightOfFestiveMoney=" + weightOfFestiveMoney
+		return "WeightsModel [weightOfdeposit=" + weightOfdeposit + ", weightOfFestiveMoney=" + weightOfKeyMoney
 				+ ", weightOfAddress=" + weightOfAddress + ", weightOfTimeToStation=" + weightOfTimeToStation
 				+ ", weightOfStructureAndDesign=" + weightOfStructureAndDesign + ", weightOfTotalAsableArea="
-				+ weightOfTotalAsableArea + ", weightOfNumberYears=" + weightOfNumberYears + ", weightOfFloor="
+				+ weightOfTotalUsableArea + ", weightOfNumberYears=" + weightOfNumberYears + ", weightOfFloor="
 				+ weightOfFloor + ", weightOfDirection=" + weightOfDirection + ", weightOfKindsOfHouse="
 				+ weightOfKindsOfHouse + ", weightOfFeaturesAndEquipment=" + weightOfFeaturesAndEquipment
 				+ ", weightOfDetailsOfRooms=" + weightOfDetailsOfRooms + ", weightOfTexture=" + weightOfTexture
@@ -68,12 +78,12 @@ public class WeightsModel {
 		this.weightOfdeposit = weightOfdeposit;
 	}
 
-	public double getWeightOfFestiveMoney() {
-		return weightOfFestiveMoney;
+	public double getWeightOfKeyMoney() {
+		return weightOfKeyMoney;
 	}
 
-	public void setWeightOfFestiveMoney(double weightOfFestiveMoney) {
-		this.weightOfFestiveMoney = weightOfFestiveMoney;
+	public void setWeightOfKeyMoney(double weightOfFestiveMoney) {
+		this.weightOfKeyMoney = weightOfFestiveMoney;
 	}
 
 	public double getWeightOfAddress() {
@@ -100,12 +110,12 @@ public class WeightsModel {
 		this.weightOfStructureAndDesign = weightOfStructureAndDesign;
 	}
 
-	public double getWeightOfTotalAsableArea() {
-		return weightOfTotalAsableArea;
+	public double getweightOfTotalUsableArea() {
+		return weightOfTotalUsableArea;
 	}
 
-	public void setWeightOfTotalAsableArea(double weightOfTotalAsableArea) {
-		this.weightOfTotalAsableArea = weightOfTotalAsableArea;
+	public void setWeightOfTotalUsableArea(double weightOfTotalAsableArea) {
+		this.weightOfTotalUsableArea = weightOfTotalAsableArea;
 	}
 
 	public double getWeightOfNumberYears() {

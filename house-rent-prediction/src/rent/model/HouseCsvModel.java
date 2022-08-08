@@ -1,12 +1,12 @@
 package rent.model;
 
-public class HouseModel {
+public class HouseCsvModel {
 	
-	public HouseModel() {
+	public HouseCsvModel() {
 		
 	}
 	
-	public HouseModel(String id, String deposit, String festiveMoney, String address, String timeToStation,
+	public HouseCsvModel(String id, String deposit, String festiveMoney, String address, String timeToStation,
 			String structureAndDesign, String totalAsableArea, String numberOfYearsSinceConstruction, String floor,
 			String direction, String kindsOfHouse, String featuresAndEquipment, String detailsOfRooms, String texture,
 			String totalFloor, String yearsOfConstruction, String insurance, String parkingLot, String goIn,
@@ -14,15 +14,15 @@ public class HouseModel {
 			String nextUpdateDate, String remark) {
 		this.id = id;
 		this.deposit = deposit;
-		this.festiveMoney = festiveMoney;
+		this.keyMoney = festiveMoney;
 		this.address = address;
 		this.timeToStation = timeToStation;
 		this.structureAndDesign = structureAndDesign;
-		this.totalAsableArea = totalAsableArea;
+		this.totalUsableArea = totalAsableArea;
 		this.numberOfYearsSinceConstruction = numberOfYearsSinceConstruction;
 		this.floor = floor;
 		this.direction = direction;
-		kindsOfHouse = kindsOfHouse;
+		this.kindsOfHouse = kindsOfHouse;
 		this.featuresAndEquipment = featuresAndEquipment;
 		this.detailsOfRooms = detailsOfRooms;
 		this.texture = texture;
@@ -58,11 +58,11 @@ public class HouseModel {
 	}
 
 	public String getFestiveMoney() {
-		return festiveMoney;
+		return keyMoney;
 	}
 
 	public void setFestiveMoney(String festiveMoney) {
-		this.festiveMoney = festiveMoney;
+		this.keyMoney = festiveMoney;
 	}
 
 	public String getAddress() {
@@ -90,11 +90,11 @@ public class HouseModel {
 	}
 
 	public String getTotalAsableArea() {
-		return totalAsableArea;
+		return totalUsableArea;
 	}
 
 	public void setTotalAsableArea(String totalAsableArea) {
-		this.totalAsableArea = totalAsableArea;
+		this.totalUsableArea = totalAsableArea;
 	}
 
 	public String getNumberOfYearsSinceConstruction() {
@@ -243,7 +243,7 @@ public class HouseModel {
 
 	String deposit;
 	
-	String festiveMoney;
+	String keyMoney;
 	
 	String address;
 	
@@ -251,7 +251,7 @@ public class HouseModel {
 	
 	String structureAndDesign;
 	
-	String totalAsableArea;
+	String totalUsableArea;
 	
 	String numberOfYearsSinceConstruction;
 
@@ -291,9 +291,9 @@ public class HouseModel {
 	
 	@Override
 	public String toString() {
-		return "HouseModel [id=" + id + ", deposit=" + deposit + ", festiveMoney=" + festiveMoney + ", address="
+		return "HouseModel [id=" + id + ", deposit=" + deposit + ", festiveMoney=" + keyMoney + ", address="
 				+ address + ", timeToStation=" + timeToStation + ", structureAndDesign=" + structureAndDesign
-				+ ", totalAsableArea=" + totalAsableArea + ", numberOfYearsSinceConstruction="
+				+ ", totalAsableArea=" + totalUsableArea + ", numberOfYearsSinceConstruction="
 				+ numberOfYearsSinceConstruction + ", floor=" + floor + ", direction=" + direction + ", KindsOfHouse="
 				+ kindsOfHouse + ", featuresAndEquipment=" + featuresAndEquipment + ", detailsOfRooms=" + detailsOfRooms
 				+ ", texture=" + texture + ", totalFloor=" + totalFloor + ", yearsOfConstruction=" + yearsOfConstruction
@@ -304,8 +304,8 @@ public class HouseModel {
 	}
 
 	public String[] toArrayString() {
-		return new String[] {this.id, this.deposit, this.festiveMoney, this.address, this.timeToStation,
-				this.structureAndDesign, this.totalAsableArea, this.numberOfYearsSinceConstruction, this.floor,
+		return new String[] {this.id, this.deposit, this.keyMoney, this.address, this.timeToStation,
+				this.structureAndDesign, this.totalUsableArea, this.numberOfYearsSinceConstruction, this.floor,
 				this.direction, this.kindsOfHouse, this.featuresAndEquipment, this.detailsOfRooms, this.texture,
 				this.totalFloor, this.yearsOfConstruction, this.insurance, this.parkingLot, this.goIn,
 				this.transactionForm, this.condition, this.totalNumberOfApartments, this.updateDate,
