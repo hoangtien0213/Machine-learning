@@ -3,7 +3,6 @@ package rent.util;
 import java.util.ArrayList;
 import java.util.List;
 
-import rent.model.HouseCsvModel;
 import rent.model.HouseDataModel;
 import rent.model.WeightsModel;
 
@@ -66,9 +65,5 @@ public class PredictUtil {
 		return weight;
 	}
 	
-	// Todo
-	private HouseDataModel ConvertCsvToModel(HouseCsvModel data) {
-		return new HouseDataModel();
 
-	}
 }

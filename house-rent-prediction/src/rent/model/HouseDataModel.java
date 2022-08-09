@@ -11,6 +11,8 @@ public class HouseDataModel {
 
 	double timeToStation;
 
+	int stationCount;
+
 	double structureAndDesign;
 
 	double totalUsableArea;
@@ -90,6 +92,14 @@ public class HouseDataModel {
 
 	public void setTimeToStation(double timeToStation) {
 		this.timeToStation = timeToStation;
+	}
+
+	public int getStationCount() {
+		return stationCount;
+	}
+
+	public void setStationCount(int stationCount) {
+		this.stationCount = stationCount;
 	}
 
 	public double getStructureAndDesign() {

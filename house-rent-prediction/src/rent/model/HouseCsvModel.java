@@ -6,19 +6,43 @@ public class HouseCsvModel {
 		
 	}
 	
-	public HouseCsvModel(String id, String deposit, String festiveMoney, String address, String timeToStation,
-			String structureAndDesign, String totalAsableArea, String numberOfYearsSinceConstruction, String floor,
-			String direction, String kindsOfHouse, String featuresAndEquipment, String detailsOfRooms, String texture,
-			String totalFloor, String yearsOfConstruction, String insurance, String parkingLot, String goIn,
-			String transactionForm, String condition, String totalNumberOfApartments, String updateDate,
-			String nextUpdateDate, String remark) {
+	public HouseCsvModel(
+			String id,
+			String name,
+			String rentAndFee, 
+			String deposit,
+			String festiveMoney,
+			String address, 
+			String timeToStation,
+			String structureAndDesign, 
+			String TotalUsableArea, 
+			String numberOfYearsSinceConstruction, 
+			String floor,
+			String direction, 
+			String kindsOfHouse, 
+			String featuresAndEquipment, 
+			String detailsOfRooms, 
+			String texture,
+			String totalFloor, 
+			String yearsOfConstruction, 
+			String insurance, 
+			String parkingLot, 
+			String goIn,
+			String transactionForm, 
+			String condition, 
+			String totalNumberOfApartments, 
+			String updateDate,
+			String nextUpdateDate, 
+			String remark) {
 		this.id = id;
+		this.name = name;
+		this.rentAndFee = rentAndFee;
 		this.deposit = deposit;
 		this.keyMoney = festiveMoney;
 		this.address = address;
 		this.timeToStation = timeToStation;
 		this.structureAndDesign = structureAndDesign;
-		this.totalUsableArea = totalAsableArea;
+		this.totalUsableArea = TotalUsableArea;
 		this.numberOfYearsSinceConstruction = numberOfYearsSinceConstruction;
 		this.floor = floor;
 		this.direction = direction;
@@ -47,6 +71,22 @@ public class HouseCsvModel {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getRentAndFee() {
+		return rentAndFee;
+	}
+
+	public void setRentAndFee(String rentAndFee) {
+		this.rentAndFee = rentAndFee;
 	}
 
 	public String getDeposit() {
@@ -89,12 +129,12 @@ public class HouseCsvModel {
 		this.structureAndDesign = structureAndDesign;
 	}
 
-	public String getTotalAsableArea() {
+	public String getTotalUsableArea() {
 		return totalUsableArea;
 	}
 
-	public void setTotalAsableArea(String totalAsableArea) {
-		this.totalUsableArea = totalAsableArea;
+	public void setTotalUsableArea(String TotalUsableArea) {
+		this.totalUsableArea = TotalUsableArea;
 	}
 
 	public String getNumberOfYearsSinceConstruction() {
@@ -240,6 +280,9 @@ public class HouseCsvModel {
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
+	String name;
+
+	String rentAndFee;
 
 	String deposit;
 	
@@ -293,7 +336,7 @@ public class HouseCsvModel {
 	public String toString() {
 		return "HouseModel [id=" + id + ", deposit=" + deposit + ", festiveMoney=" + keyMoney + ", address="
 				+ address + ", timeToStation=" + timeToStation + ", structureAndDesign=" + structureAndDesign
-				+ ", totalAsableArea=" + totalUsableArea + ", numberOfYearsSinceConstruction="
+				+ ", TotalUsableArea=" + totalUsableArea + ", numberOfYearsSinceConstruction="
 				+ numberOfYearsSinceConstruction + ", floor=" + floor + ", direction=" + direction + ", KindsOfHouse="
 				+ kindsOfHouse + ", featuresAndEquipment=" + featuresAndEquipment + ", detailsOfRooms=" + detailsOfRooms
 				+ ", texture=" + texture + ", totalFloor=" + totalFloor + ", yearsOfConstruction=" + yearsOfConstruction
