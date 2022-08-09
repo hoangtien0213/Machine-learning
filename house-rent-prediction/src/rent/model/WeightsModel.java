@@ -2,6 +2,42 @@ package rent.model;
 
 public class WeightsModel {
 
+	public WeightsModel() {
+		
+	};
+	
+	public WeightsModel(double bias, double weightOfdeposit, double weightOfKeyMoney, double weightOfAddress,
+			double weightOfTimeToStation, double weightOfStructureAndDesign, double weightOfTotalUsableArea,
+			double weightOfNumberYears, double weightOfFloor, double weightOfDirection, double weightOfKindsOfHouse,
+			double weightOfFeaturesAndEquipment, double weightOfDetailsOfRooms, double weightOfTexture,
+			double weightOfTotalFloor, double weightOfYearsOfConstruction, double weightOfInsurance,
+			double weightOfParkingLot, double weightOfGoIn, double weightOfTransactionForm, double weightOfCondition,
+			double weightOfTotalNumberOfApartments) {
+		super();
+		this.bias = bias;
+		this.weightOfdeposit = weightOfdeposit;
+		this.weightOfKeyMoney = weightOfKeyMoney;
+		this.weightOfAddress = weightOfAddress;
+		this.weightOfTimeToStation = weightOfTimeToStation;
+		this.weightOfStructureAndDesign = weightOfStructureAndDesign;
+		this.weightOfTotalUsableArea = weightOfTotalUsableArea;
+		this.weightOfNumberYears = weightOfNumberYears;
+		this.weightOfFloor = weightOfFloor;
+		this.weightOfDirection = weightOfDirection;
+		this.weightOfKindsOfHouse = weightOfKindsOfHouse;
+		this.weightOfFeaturesAndEquipment = weightOfFeaturesAndEquipment;
+		this.weightOfDetailsOfRooms = weightOfDetailsOfRooms;
+		this.weightOfTexture = weightOfTexture;
+		this.weightOfTotalFloor = weightOfTotalFloor;
+		this.weightOfYearsOfConstruction = weightOfYearsOfConstruction;
+		this.weightOfInsurance = weightOfInsurance;
+		this.weightOfParkingLot = weightOfParkingLot;
+		this.weightOfGoIn = weightOfGoIn;
+		this.weightOfTransactionForm = weightOfTransactionForm;
+		this.weightOfCondition = weightOfCondition;
+		this.weightOfTotalNumberOfApartments = weightOfTotalNumberOfApartments;
+	}
+
 	double bias = 200;
 
 	public double getBias() {

@@ -26,7 +26,7 @@ public class CsvUtil {
 		File file = new File(path1.toUri());
 
 		try {
-			InputStreamReader csvStreamReader = new InputStreamReader(new FileInputStream(file), "SJIS");
+			InputStreamReader csvStreamReader = new InputStreamReader(new FileInputStream(file), "UTF-8");
 			CSVReader reader = new CSVReader(csvStreamReader);
 			String[] nextLine;
 			while ((nextLine = reader.readNext()) != null) {
