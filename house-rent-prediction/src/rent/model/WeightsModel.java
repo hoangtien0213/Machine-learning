@@ -3,9 +3,9 @@ package rent.model;
 public class WeightsModel {
 
 	public WeightsModel() {
-		
+
 	};
-	
+
 	public WeightsModel(double bias, double weightOfdeposit, double weightOfKeyMoney, double weightOfAddress,
 			double weightOfTimeToStation, double weightOfStructureAndDesign, double weightOfTotalUsableArea,
 			double weightOfNumberYears, double weightOfFloor, double weightOfDirection, double weightOfKindsOfHouse,
@@ -38,7 +38,49 @@ public class WeightsModel {
 		this.weightOfTotalNumberOfApartments = weightOfTotalNumberOfApartments;
 	}
 
-	double bias = 200;
+	double bias = 0;
+
+	double weightOfdeposit = 0;
+
+	double weightOfKeyMoney = 0;
+
+	double weightOfAddress = 0;
+
+	double weightOfTimeToStation = 0;
+
+	double weightOfStructureAndDesign = 0;
+
+	double weightOfTotalUsableArea = 0;
+
+	double weightOfNumberYears = 0;
+
+	double weightOfFloor = 0;
+
+	double weightOfDirection = 0;
+
+	double weightOfKindsOfHouse = 0;
+
+	double weightOfFeaturesAndEquipment = 0;
+
+	double weightOfDetailsOfRooms = 0;
+
+	double weightOfTexture = 0;
+
+	double weightOfTotalFloor = 0;
+
+	double weightOfYearsOfConstruction = 0;
+
+	double weightOfInsurance = 0;
+
+	double weightOfParkingLot = 0;
+
+	double weightOfGoIn = 0;
+
+	double weightOfTransactionForm = 0;
+
+	double weightOfCondition = 0;
+
+	double weightOfTotalNumberOfApartments = 0;
 
 	public double getBias() {
 		return bias;
@@ -46,64 +88,6 @@ public class WeightsModel {
 
 	public void setBias(double bias) {
 		this.bias = bias;
-	}
-
-	double weightOfdeposit;
-
-	double weightOfKeyMoney;
-
-	double weightOfAddress;
-
-	double weightOfTimeToStation;
-
-	double weightOfStructureAndDesign;
-
-	double weightOfTotalUsableArea;
-
-	double weightOfNumberYears;
-
-	double weightOfFloor;
-
-	double weightOfDirection;
-
-	double weightOfKindsOfHouse;
-
-	double weightOfFeaturesAndEquipment;
-
-	double weightOfDetailsOfRooms;
-
-	double weightOfTexture;
-
-	double weightOfTotalFloor;
-
-	double weightOfYearsOfConstruction;
-
-	double weightOfInsurance;
-
-	double weightOfParkingLot;
-
-	double weightOfGoIn;
-
-	double weightOfTransactionForm;
-
-	double weightOfCondition;
-
-	double weightOfTotalNumberOfApartments;
-
-	@Override
-	public String toString() {
-		return "WeightsModel [weightOfdeposit=" + weightOfdeposit + ", weightOfFestiveMoney=" + weightOfKeyMoney
-				+ ", weightOfAddress=" + weightOfAddress + ", weightOfTimeToStation=" + weightOfTimeToStation
-				+ ", weightOfStructureAndDesign=" + weightOfStructureAndDesign + ", weightOfTotalAsableArea="
-				+ weightOfTotalUsableArea + ", weightOfNumberYears=" + weightOfNumberYears + ", weightOfFloor="
-				+ weightOfFloor + ", weightOfDirection=" + weightOfDirection + ", weightOfKindsOfHouse="
-				+ weightOfKindsOfHouse + ", weightOfFeaturesAndEquipment=" + weightOfFeaturesAndEquipment
-				+ ", weightOfDetailsOfRooms=" + weightOfDetailsOfRooms + ", weightOfTexture=" + weightOfTexture
-				+ ", weightOfTotalFloor=" + weightOfTotalFloor + ", weightOfYearsOfConstruction="
-				+ weightOfYearsOfConstruction + ", weightOfInsurance=" + weightOfInsurance + ", weightOfParkingLot="
-				+ weightOfParkingLot + ", weightOfGoIn=" + weightOfGoIn + ", weightOfTransactionForm="
-				+ weightOfTransactionForm + ", weightOfCondition=" + weightOfCondition
-				+ ", weightOfTotalNumberOfApartments=" + weightOfTotalNumberOfApartments + "]";
 	}
 
 	public double getWeightOfdeposit() {
@@ -272,5 +256,21 @@ public class WeightsModel {
 
 	public void setWeightOfTotalNumberOfApartments(double weightOfTotalNumberOfApartments) {
 		this.weightOfTotalNumberOfApartments = weightOfTotalNumberOfApartments;
+	}
+
+	@Override
+	public String toString() {
+		return "WeightsModel [weightOfdeposit=" + weightOfdeposit + ", weightOfFestiveMoney=" + weightOfKeyMoney
+				+ ", weightOfAddress=" + weightOfAddress + ", weightOfTimeToStation=" + weightOfTimeToStation
+				+ ", weightOfStructureAndDesign=" + weightOfStructureAndDesign + ", weightOfTotalAsableArea="
+				+ weightOfTotalUsableArea + ", weightOfNumberYears=" + weightOfNumberYears + ", weightOfFloor="
+				+ weightOfFloor + ", weightOfDirection=" + weightOfDirection + ", weightOfKindsOfHouse="
+				+ weightOfKindsOfHouse + ", weightOfFeaturesAndEquipment=" + weightOfFeaturesAndEquipment
+				+ ", weightOfDetailsOfRooms=" + weightOfDetailsOfRooms + ", weightOfTexture=" + weightOfTexture
+				+ ", weightOfTotalFloor=" + weightOfTotalFloor + ", weightOfYearsOfConstruction="
+				+ weightOfYearsOfConstruction + ", weightOfInsurance=" + weightOfInsurance + ", weightOfParkingLot="
+				+ weightOfParkingLot + ", weightOfGoIn=" + weightOfGoIn + ", weightOfTransactionForm="
+				+ weightOfTransactionForm + ", weightOfCondition=" + weightOfCondition
+				+ ", weightOfTotalNumberOfApartments=" + weightOfTotalNumberOfApartments + "]";
 	}
 }

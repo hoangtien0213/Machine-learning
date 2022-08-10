@@ -1,24 +1,26 @@
 package rent.model;
 
 public class HouseCsvModel {
-	
+
 	public HouseCsvModel() {
-		
+
 	}
-	
-	public HouseCsvModel(String id, String deposit, String festiveMoney, String address, String timeToStation,
-			String structureAndDesign, String totalAsableArea, String numberOfYearsSinceConstruction, String floor,
+
+	public HouseCsvModel(String id, String name, String deposit, String keyMoney, String address, String timeToStation,
+			String structureAndDesign, String totalUsableArea, String numberOfYearsSinceConstruction, String floor,
 			String direction, String kindsOfHouse, String featuresAndEquipment, String detailsOfRooms, String texture,
 			String totalFloor, String yearsOfConstruction, String insurance, String parkingLot, String goIn,
 			String transactionForm, String condition, String totalNumberOfApartments, String updateDate,
 			String nextUpdateDate, String remark) {
+		super();
 		this.id = id;
+		this.name = name;
 		this.deposit = deposit;
-		this.keyMoney = festiveMoney;
+		this.keyMoney = keyMoney;
 		this.address = address;
 		this.timeToStation = timeToStation;
 		this.structureAndDesign = structureAndDesign;
-		this.totalUsableArea = totalAsableArea;
+		this.totalUsableArea = totalUsableArea;
 		this.numberOfYearsSinceConstruction = numberOfYearsSinceConstruction;
 		this.floor = floor;
 		this.direction = direction;
@@ -41,6 +43,56 @@ public class HouseCsvModel {
 
 	String id;
 
+	String name;
+
+	String deposit;
+
+	String keyMoney;
+
+	String address;
+
+	String timeToStation;
+
+	String structureAndDesign;
+
+	String totalUsableArea;
+
+	String numberOfYearsSinceConstruction;
+
+	String floor;
+
+	String direction;
+
+	String kindsOfHouse;
+
+	String featuresAndEquipment;
+
+	String detailsOfRooms;
+
+	String texture;
+
+	String totalFloor;
+
+	String yearsOfConstruction;
+
+	String insurance;
+
+	String parkingLot;
+
+	String goIn;
+
+	String transactionForm;
+
+	String condition;
+
+	String totalNumberOfApartments;
+
+	String updateDate;
+
+	String nextUpdateDate;
+
+	String remark;
+
 	public String getId() {
 		return id;
 	}
@@ -57,12 +109,12 @@ public class HouseCsvModel {
 		this.deposit = deposit;
 	}
 
-	public String getFestiveMoney() {
+	public String getKeyMoney() {
 		return keyMoney;
 	}
 
-	public void setFestiveMoney(String festiveMoney) {
-		this.keyMoney = festiveMoney;
+	public void setKeyMoney(String KeyMoney) {
+		this.keyMoney = KeyMoney;
 	}
 
 	public String getAddress() {
@@ -89,12 +141,12 @@ public class HouseCsvModel {
 		this.structureAndDesign = structureAndDesign;
 	}
 
-	public String getTotalAsableArea() {
+	public String getTotalUsableArea() {
 		return totalUsableArea;
 	}
 
-	public void setTotalAsableArea(String totalAsableArea) {
-		this.totalUsableArea = totalAsableArea;
+	public void setTotalUsableArea(String totalUsableArea) {
+		this.totalUsableArea = totalUsableArea;
 	}
 
 	public String getNumberOfYearsSinceConstruction() {
@@ -126,7 +178,7 @@ public class HouseCsvModel {
 	}
 
 	public void setKindsOfHouse(String kindsOfHouse) {
-		kindsOfHouse = kindsOfHouse;
+		this.kindsOfHouse = kindsOfHouse;
 	}
 
 	public String getFeaturesAndEquipment() {
@@ -241,74 +293,33 @@ public class HouseCsvModel {
 		this.remark = remark;
 	}
 
-	String deposit;
-	
-	String keyMoney;
-	
-	String address;
-	
-	String timeToStation;
-	
-	String structureAndDesign;
-	
-	String totalUsableArea;
-	
-	String numberOfYearsSinceConstruction;
+	public String getName() {
+		return name;
+	}
 
-	String floor;
-	
-	String direction;
-	
-	String kindsOfHouse;
-	
-	String featuresAndEquipment;
-	
-	String detailsOfRooms;
-	
-	String texture;
-	
-	String totalFloor;
-	
-	String yearsOfConstruction;
-	
-	String insurance;
-	
-	String parkingLot;
-	
-	String goIn;
-	
-	String transactionForm;
-	
-	String condition;
-	
-	String totalNumberOfApartments;
-	
-	String updateDate;
-	
-	String nextUpdateDate;
-	
-	String remark;
-	
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	@Override
 	public String toString() {
-		return "HouseModel [id=" + id + ", deposit=" + deposit + ", festiveMoney=" + keyMoney + ", address="
-				+ address + ", timeToStation=" + timeToStation + ", structureAndDesign=" + structureAndDesign
-				+ ", totalAsableArea=" + totalUsableArea + ", numberOfYearsSinceConstruction="
+		return "HouseModel [id=" + id + ", deposit=" + deposit + ", KeyMoney=" + keyMoney + ", address=" + address
+				+ ", timeToStation=" + timeToStation + ", structureAndDesign=" + structureAndDesign
+				+ ", totalUsableArea=" + totalUsableArea + ", numberOfYearsSinceConstruction="
 				+ numberOfYearsSinceConstruction + ", floor=" + floor + ", direction=" + direction + ", KindsOfHouse="
 				+ kindsOfHouse + ", featuresAndEquipment=" + featuresAndEquipment + ", detailsOfRooms=" + detailsOfRooms
 				+ ", texture=" + texture + ", totalFloor=" + totalFloor + ", yearsOfConstruction=" + yearsOfConstruction
 				+ ", insurance=" + insurance + ", parkingLot=" + parkingLot + ", goIn=" + goIn + ", transactionForm="
 				+ transactionForm + ", condition=" + condition + ", totalNumberOfApartments=" + totalNumberOfApartments
-				+ ", updateDate=" + updateDate + ", nextUpdateDate=" + nextUpdateDate + ", remark=" + remark				
-				+ "]";
+				+ ", updateDate=" + updateDate + ", nextUpdateDate=" + nextUpdateDate + ", remark=" + remark + "]";
 	}
 
 	public String[] toArrayString() {
-		return new String[] {this.id, this.deposit, this.keyMoney, this.address, this.timeToStation,
+		return new String[] { this.id, this.deposit, this.keyMoney, this.address, this.timeToStation,
 				this.structureAndDesign, this.totalUsableArea, this.numberOfYearsSinceConstruction, this.floor,
 				this.direction, this.kindsOfHouse, this.featuresAndEquipment, this.detailsOfRooms, this.texture,
 				this.totalFloor, this.yearsOfConstruction, this.insurance, this.parkingLot, this.goIn,
 				this.transactionForm, this.condition, this.totalNumberOfApartments, this.updateDate,
-				this.nextUpdateDate, this.remark};
+				this.nextUpdateDate, this.remark };
 	}
 }
