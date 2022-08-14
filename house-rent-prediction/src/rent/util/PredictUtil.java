@@ -158,7 +158,8 @@ public class PredictUtil {
 	            data.setStructureAndDesign(1);
 	        } else {
 	            double roomNum = Double.parseDouble(csv.getStructureAndDesign().substring(0, 1));
-	            double subRoom = (csv.getStructureAndDesign().length() - 1) / 2.0;
+	            // Moi phong L,D,K ~ 1/3 Bed room (30%)
+	            double subRoom = (csv.getStructureAndDesign().length() - 1) / 3.0;
 	            data.setStructureAndDesign(roomNum + subRoom);
 	        }
 
