@@ -10,17 +10,22 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 
 import rent.model.HouseCsvModel;
+import rent.model.HouseDataModel;
 import rent.model.PredictModel;
 
 public class CsvUtil {
 
-	public List<HouseCsvModel> readDataFromCsv(String fileName) {
-		List<HouseCsvModel> dataHouseList = new ArrayList<HouseCsvModel>();
+	private static final String regex_number = "(-?\\d+(\\.\\d+)?)|(-?\\d+)";
+
+	public List<HouseDataModel> readDataFromCsv(String fileName) {
+		List<HouseDataModel> dataHouseList = new ArrayList<HouseDataModel>();
 		Path path1 = Paths.get(fileName);
 
 		File file = new File(path1.toUri());
@@ -37,7 +42,7 @@ public class CsvUtil {
 						nextLine[12], nextLine[13], nextLine[14], nextLine[15], nextLine[16], nextLine[17],
 						nextLine[18], nextLine[19], nextLine[20], nextLine[21], nextLine[22], nextLine[23],
 						nextLine[24], nextLine[25]);
-				dataHouseList.add(data);
+				dataHouseList.add(this.convertCsvToModel(data));
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -48,7 +53,7 @@ public class CsvUtil {
 		}
 		return dataHouseList;
 	}
-	
+
 	public List<PredictModel> readDataPredictFromCsv(String fileName) {
 		List<PredictModel> predictList = new ArrayList<PredictModel>();
 		Path path1 = Paths.get(fileName);
@@ -92,5 +97,98 @@ public class CsvUtil {
 			e.printStackTrace();
 		}
 
+	}
+
+	public HouseDataModel convertCsvToModel(HouseCsvModel csv) {
+		HouseDataModel data = new HouseDataModel();
+		// ID
+		data.setId(csv.getId());
+
+		// Address
+		// data.setAddress(1);
+
+		// Time to station
+		final String regex = "\\d+";
+		final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
+		final Matcher matcher = pattern.matcher(csv.getTimeToStation());
+		long min = 0;
+		int count = 0;
+		while (matcher.find()) {
+			// min += Integer.parseInt(matcher.group(0));
+			if (count == 0) {
+				min = Integer.parseInt(matcher.group(0));
+			} else {
+				long temp = Integer.parseInt(matcher.group(0));
+				if (temp < min) {
+					min = temp;
+				}
+			}
+			count++;
+		}
+
+		data.setTimeToStation(min * 300.0);
+
+		// StructureAndDesign
+		// https://resources.realestate.co.jp/living/1r-1k-1dk-1ldk-apartment-whats-the-difference-and-which-should-i-rent/
+		// https://resources.realestate.co.jp/living/what-is-a-2ldk-apartment-real-estate-japans-word-of-the-day/
+		long roomCost = 400;
+		if (Constant.WARUMU.equals(csv.getStructureAndDesign())) {
+			data.setStructureAndDesign(roomCost);
+		} else {
+			String roomCount = this.getNumberIn(csv.getStructureAndDesign()).get(0);
+			double roomNum = Double.parseDouble(roomCount);
+			// Moi phong L,D,K ~ 1/3 Bed room (30%)
+			double subRoom = (csv.getStructureAndDesign().length() - roomCount.length()) / 3.0;
+			data.setStructureAndDesign(roomNum + roomCost * (subRoom + 1));
+		}
+
+		// totalAsableArea
+		data.setTotalUsableArea(600 * Double.parseDouble(this.getNumberIn(csv.getTotalUsableArea()).get(0)));
+
+		// numberOfYearsSinceConstruction
+		long costHouseNew = 1000;
+		if (Constant.HOUSE_NEW.equals(csv.getNumberOfYearsSinceConstruction())) {
+			data.setNumberOfYearsSinceConstruction(2 * costHouseNew);
+		} else {
+			data.setNumberOfYearsSinceConstruction(costHouseNew + (costHouseNew
+					/ Double.parseDouble(this.getNumberIn(csv.getNumberOfYearsSinceConstruction()).get(0))));
+		}
+
+		// floor
+		if (Constant.DASHES.equals(csv.getFloor())) {
+			data.setFloor(1);
+		} else {
+			data.setFloor(Double.parseDouble(this.getNumberIn(csv.getFloor()).get(0)));
+		}
+
+		long costHouseKind = 300;
+		if (Constant.HOUSE_KIND_MANSHON.equals(csv.getKindsOfHouse())) {
+			data.setKindsOfHouse(1.5 * costHouseKind);
+		} else if (Constant.HOUSE_KIND_APAITO.equals(csv.getKindsOfHouse())) {
+			data.setKindsOfHouse(1.4 * costHouseKind);
+		} else if (Constant.HOUSE_KIND_DETACHED_HOUSE.equals(csv.getKindsOfHouse())) {
+			data.setKindsOfHouse(1.3 * costHouseKind);
+		} else if (Constant.HOUSE_KIND_TOWNHOUSES.equals(csv.getKindsOfHouse())) {
+			data.setKindsOfHouse(1.2 * costHouseKind);
+		} else {
+			data.setKindsOfHouse(costHouseKind);
+		}
+
+		// featuresAndEquipment
+		data.setFeaturesAndEquipment(150 * csv.getFeaturesAndEquipment().split(Constant.COMMA_FULLSIZE).length);
+
+		return data;
+	}
+
+	private List<String> getNumberIn(String stringToSearch) {
+		Pattern integerPattern = Pattern.compile(regex_number);
+		Matcher matcher = integerPattern.matcher(stringToSearch);
+
+		List<String> integerList = new ArrayList<>();
+		while (matcher.find()) {
+			integerList.add(matcher.group());
+		}
+
+		return integerList;
 	}
 }

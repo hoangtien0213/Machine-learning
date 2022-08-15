@@ -8,5 +8,5 @@ public class Constant {
 	public static String HOUSE_KIND_DETACHED_HOUSE = "一戸建て";
 	public static String HOUSE_KIND_TOWNHOUSES="テラス・タウンハウス";
 	public static String DASHES = "-";
-
+	public static String COMMA_FULLSIZE = "、";
 }

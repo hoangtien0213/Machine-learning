@@ -6,6 +6,20 @@ public class WeightsModel {
 
 	};
 
+	public WeightsModel(double bias, double weightOfTimeToStation, double weightOfStructureAndDesign,
+			double weightOfTotalUsableArea, double weightOfNumberYears, double weightOfFloor,
+			double weightOfKindsOfHouse, double weightOfFeaturesAndEquipment) {
+		super();
+		this.bias = bias;
+		this.weightOfTimeToStation = weightOfTimeToStation;
+		this.weightOfStructureAndDesign = weightOfStructureAndDesign;
+		this.weightOfTotalUsableArea = weightOfTotalUsableArea;
+		this.weightOfNumberYears = weightOfNumberYears;
+		this.weightOfFloor = weightOfFloor;
+		this.weightOfKindsOfHouse = weightOfKindsOfHouse;
+		this.weightOfFeaturesAndEquipment = weightOfFeaturesAndEquipment;
+	}
+
 	public WeightsModel(double bias, double weightOfdeposit, double weightOfKeyMoney, double weightOfAddress,
 			double weightOfTimeToStation, double weightOfStructureAndDesign, double weightOfTotalUsableArea,
 			double weightOfNumberYears, double weightOfFloor, double weightOfDirection, double weightOfKindsOfHouse,

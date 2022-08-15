@@ -1,56 +1,55 @@
 package rent.model;
 
 public class HouseDataModel {
-	String id;
-	
-	double deposit;
+	String id="";
 
-	double keyMoney;
+	double deposit = 0.0;
 
-	double address;
+	double keyMoney = 0.0;
 
-	double timeToStation;
+	double address = 0.0;
 
-	double structureAndDesign;
+	double timeToStation = 0.0;
 
-	double totalUsableArea;
+	double structureAndDesign = 0.0;
 
-	double numberOfYearsSinceConstruction;
+	double totalUsableArea = 0.0;
 
-	double floor;
+	double numberOfYearsSinceConstruction = 0.0;
 
-	double direction;
+	double floor = 0.0;
 
-	double kindsOfHouse;
+	double direction = 0.0;
 
-	double featuresAndEquipment;
+	double kindsOfHouse = 0.0;
 
-	double detailsOfRooms;
+	double featuresAndEquipment = 0.0;
 
-	double texture;
+	double detailsOfRooms = 0.0;
 
-	double totalFloor;
+	double texture = 0.0;
 
-	double yearsOfConstruction;
+	double totalFloor = 0.0;
 
-	double insurance;
+	double yearsOfConstruction = 0.0;
 
-	double parkingLot;
+	double insurance = 0.0;
 
-	double goIn;
+	double parkingLot = 0.0;
 
-	double transactionForm;
+	double goIn = 0.0;
 
-	double condition;
+	double transactionForm = 0.0;
 
-	double totalNumberOfApartments;
+	double condition = 0.0;
 
-	double updateDate;
+	double totalNumberOfApartments = 0.0;
 
-	double nextUpdateDate;
+	double updateDate = 0.0;
 
-	double remark;
-	
+	double nextUpdateDate = 0.0;
+
+	double remark = 0.0;
 
 	public String getId() {
 		return id;
@@ -251,4 +250,18 @@ public class HouseDataModel {
 	public void setRemark(double remark) {
 		this.remark = remark;
 	}
+
+	@Override
+	public String toString() {
+		return "HouseDataModel [id=" + id + ", deposit=" + deposit + ", keyMoney=" + keyMoney + ", address=" + address
+				+ ", timeToStation=" + timeToStation + ", structureAndDesign=" + structureAndDesign
+				+ ", totalUsableArea=" + totalUsableArea + ", numberOfYearsSinceConstruction="
+				+ numberOfYearsSinceConstruction + ", floor=" + floor + ", direction=" + direction + ", kindsOfHouse="
+				+ kindsOfHouse + ", featuresAndEquipment=" + featuresAndEquipment + ", detailsOfRooms=" + detailsOfRooms
+				+ ", texture=" + texture + ", totalFloor=" + totalFloor + ", yearsOfConstruction=" + yearsOfConstruction
+				+ ", insurance=" + insurance + ", parkingLot=" + parkingLot + ", goIn=" + goIn + ", transactionForm="
+				+ transactionForm + ", condition=" + condition + ", totalNumberOfApartments=" + totalNumberOfApartments
+				+ ", updateDate=" + updateDate + ", nextUpdateDate=" + nextUpdateDate + ", remark=" + remark + "]";
+	}
+	
 }
