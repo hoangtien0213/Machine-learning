@@ -13,7 +13,7 @@ public class HouseRentPredict {
 
 	private static CsvUtil csvUtil = new CsvUtil();
 	private static PredictUtil preUtil = new PredictUtil();
-	private static int learning_rate = 30;
+	private static int iter = 1;
 
 	public static void main(String[] args) throws Exception {
 
@@ -21,12 +21,12 @@ public class HouseRentPredict {
 
 		List<PredictModel> predictTraining = csvUtil.readDataPredictFromCsv("input/predict-sample.csv");
 
-		WeightsModel weightModel = new WeightsModel(0.0014, 0.256, 0.255, 0.03, 0.35, 1, 1, 1);
+		WeightsModel weightModel = new WeightsModel(0.125, 0.45, 0.212, 0.1255, 0.2206, 0.22554, 0.3366, 0.3365);
 
-		WeightsModel newWeightModel = preUtil.train(dataHouseList, predictTraining, weightModel, 0.001, learning_rate);
+		WeightsModel newWeightModel = preUtil.train(dataHouseList, predictTraining, weightModel, 0.001, iter);
 		System.out.println("newWeightModel:" + newWeightModel);
 
-		List<HouseDataModel> dataHouseForPredict = csvUtil.readDataFromCsv("sample.csv");
+		List<HouseDataModel> dataHouseForPredict = csvUtil.readDataFromCsv("test.csv");
 		List<PredictModel> dataPredictList = new ArrayList<>();
 		int index = 0;
 		for (HouseDataModel houseDataModel : dataHouseForPredict) {
