@@ -126,12 +126,12 @@ public class CsvUtil {
 			count++;
 		}
 
-		data.setTimeToStation(min * 300.0);
+		data.setTimeToStation(min * 3000.0);
 
 		// StructureAndDesign
 		// https://resources.realestate.co.jp/living/1r-1k-1dk-1ldk-apartment-whats-the-difference-and-which-should-i-rent/
 		// https://resources.realestate.co.jp/living/what-is-a-2ldk-apartment-real-estate-japans-word-of-the-day/
-		long roomCost = 400;
+		long roomCost = 4000;
 		if (Constant.WARUMU.equals(csv.getStructureAndDesign())) {
 			data.setStructureAndDesign(roomCost);
 		} else {
@@ -143,10 +143,10 @@ public class CsvUtil {
 		}
 
 		// totalAsableArea
-		data.setTotalUsableArea(600 * Double.parseDouble(this.getNumberIn(csv.getTotalUsableArea()).get(0)));
+		data.setTotalUsableArea(6000 * Double.parseDouble(this.getNumberIn(csv.getTotalUsableArea()).get(0)));
 
 		// numberOfYearsSinceConstruction
-		long costHouseNew = 1000;
+		long costHouseNew = 10000;
 		if (Constant.HOUSE_NEW.equals(csv.getNumberOfYearsSinceConstruction())) {
 			data.setNumberOfYearsSinceConstruction(2 * costHouseNew);
 		} else {
@@ -161,7 +161,7 @@ public class CsvUtil {
 			data.setFloor(Double.parseDouble(this.getNumberIn(csv.getFloor()).get(0)));
 		}
 
-		long costHouseKind = 300;
+		long costHouseKind = 3000;
 		if (Constant.HOUSE_KIND_MANSHON.equals(csv.getKindsOfHouse())) {
 			data.setKindsOfHouse(1.5 * costHouseKind);
 		} else if (Constant.HOUSE_KIND_APAITO.equals(csv.getKindsOfHouse())) {
@@ -175,7 +175,7 @@ public class CsvUtil {
 		}
 
 		// featuresAndEquipment
-		data.setFeaturesAndEquipment(150 * csv.getFeaturesAndEquipment().split(Constant.COMMA_FULLSIZE).length);
+		data.setFeaturesAndEquipment(1500 * csv.getFeaturesAndEquipment().split(Constant.COMMA_FULLSIZE).length);
 
 		return data;
 	}
