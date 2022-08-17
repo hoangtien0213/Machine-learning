@@ -36,7 +36,7 @@ public class CsvUtil {
 			reader.skip(1);
 			String[] nextLine;
 			while ((nextLine = reader.readNext()) != null) {
-				System.out.println(Arrays.toString(nextLine));
+//				System.out.println(Arrays.toString(nextLine));
 				HouseCsvModel data = new HouseCsvModel(nextLine[0], nextLine[1], nextLine[2], nextLine[3], nextLine[4],
 						nextLine[5], nextLine[6], nextLine[7], nextLine[8], nextLine[9], nextLine[10], nextLine[11],
 						nextLine[12], nextLine[13], nextLine[14], nextLine[15], nextLine[16], nextLine[17],
@@ -123,15 +123,15 @@ public class CsvUtil {
 					min = temp;
 				}
 			}
-			count++;
+//			count++;
 		}
 
-		data.setTimeToStation(min * 3000.0);
+		data.setTimeToStation(300.0 * 300.0/min);
 
 		// StructureAndDesign
 		// https://resources.realestate.co.jp/living/1r-1k-1dk-1ldk-apartment-whats-the-difference-and-which-should-i-rent/
 		// https://resources.realestate.co.jp/living/what-is-a-2ldk-apartment-real-estate-japans-word-of-the-day/
-		long roomCost = 4000;
+		long roomCost = 15000;
 		if (Constant.WARUMU.equals(csv.getStructureAndDesign())) {
 			data.setStructureAndDesign(roomCost);
 		} else {
@@ -139,16 +139,16 @@ public class CsvUtil {
 			double roomNum = Double.parseDouble(roomCount);
 			// Moi phong L,D,K ~ 1/3 Bed room (30%)
 			double subRoom = (csv.getStructureAndDesign().length() - roomCount.length()) / 3.0;
-			data.setStructureAndDesign(roomNum + roomCost * (subRoom + 1));
+			data.setStructureAndDesign((roomNum * roomCost )* (subRoom + 1));
 		}
 
 		// totalAsableArea
-		data.setTotalUsableArea(6000 * Double.parseDouble(this.getNumberIn(csv.getTotalUsableArea()).get(0)));
+		data.setTotalUsableArea(1120 * Double.parseDouble(this.getNumberIn(csv.getTotalUsableArea()).get(0)));
 
 		// numberOfYearsSinceConstruction
-		long costHouseNew = 10000;
+		long costHouseNew = 35000;
 		if (Constant.HOUSE_NEW.equals(csv.getNumberOfYearsSinceConstruction())) {
-			data.setNumberOfYearsSinceConstruction(2 * costHouseNew);
+			data.setNumberOfYearsSinceConstruction(2.5 * costHouseNew);
 		} else {
 			data.setNumberOfYearsSinceConstruction(costHouseNew + (costHouseNew
 					/ Double.parseDouble(this.getNumberIn(csv.getNumberOfYearsSinceConstruction()).get(0))));
@@ -161,15 +161,15 @@ public class CsvUtil {
 			data.setFloor(Double.parseDouble(this.getNumberIn(csv.getFloor()).get(0)));
 		}
 
-		long costHouseKind = 3000;
+		long costHouseKind = 1000;
 		if (Constant.HOUSE_KIND_MANSHON.equals(csv.getKindsOfHouse())) {
-			data.setKindsOfHouse(1.5 * costHouseKind);
+			data.setKindsOfHouse(2 * costHouseKind);
 		} else if (Constant.HOUSE_KIND_APAITO.equals(csv.getKindsOfHouse())) {
-			data.setKindsOfHouse(1.4 * costHouseKind);
+			data.setKindsOfHouse(1.7 * costHouseKind);
 		} else if (Constant.HOUSE_KIND_DETACHED_HOUSE.equals(csv.getKindsOfHouse())) {
-			data.setKindsOfHouse(1.3 * costHouseKind);
+			data.setKindsOfHouse(1.5 * costHouseKind);
 		} else if (Constant.HOUSE_KIND_TOWNHOUSES.equals(csv.getKindsOfHouse())) {
-			data.setKindsOfHouse(1.2 * costHouseKind);
+			data.setKindsOfHouse(1.3 * costHouseKind);
 		} else {
 			data.setKindsOfHouse(costHouseKind);
 		}

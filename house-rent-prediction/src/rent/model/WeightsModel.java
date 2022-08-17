@@ -274,17 +274,17 @@ public class WeightsModel {
 
 	@Override
 	public String toString() {
-		return "WeightsModel [weightOfdeposit=" + weightOfdeposit + ", weightOfFestiveMoney=" + weightOfKeyMoney
-				+ ", weightOfAddress=" + weightOfAddress + ", weightOfTimeToStation=" + weightOfTimeToStation
-				+ ", weightOfStructureAndDesign=" + weightOfStructureAndDesign + ", weightOfTotalAsableArea="
-				+ weightOfTotalUsableArea + ", weightOfNumberYears=" + weightOfNumberYears + ", weightOfFloor="
-				+ weightOfFloor + ", weightOfDirection=" + weightOfDirection + ", weightOfKindsOfHouse="
-				+ weightOfKindsOfHouse + ", weightOfFeaturesAndEquipment=" + weightOfFeaturesAndEquipment
-				+ ", weightOfDetailsOfRooms=" + weightOfDetailsOfRooms + ", weightOfTexture=" + weightOfTexture
-				+ ", weightOfTotalFloor=" + weightOfTotalFloor + ", weightOfYearsOfConstruction="
-				+ weightOfYearsOfConstruction + ", weightOfInsurance=" + weightOfInsurance + ", weightOfParkingLot="
-				+ weightOfParkingLot + ", weightOfGoIn=" + weightOfGoIn + ", weightOfTransactionForm="
-				+ weightOfTransactionForm + ", weightOfCondition=" + weightOfCondition
+		return "WeightsModel [bias=" + bias + ", weightOfdeposit=" + weightOfdeposit + ", weightOfKeyMoney="
+				+ weightOfKeyMoney + ", weightOfAddress=" + weightOfAddress + ", weightOfTimeToStation="
+				+ weightOfTimeToStation + ", weightOfStructureAndDesign=" + weightOfStructureAndDesign
+				+ ", weightOfTotalUsableArea=" + weightOfTotalUsableArea + ", weightOfNumberYears="
+				+ weightOfNumberYears + ", weightOfFloor=" + weightOfFloor + ", weightOfDirection=" + weightOfDirection
+				+ ", weightOfKindsOfHouse=" + weightOfKindsOfHouse + ", weightOfFeaturesAndEquipment="
+				+ weightOfFeaturesAndEquipment + ", weightOfDetailsOfRooms=" + weightOfDetailsOfRooms
+				+ ", weightOfTexture=" + weightOfTexture + ", weightOfTotalFloor=" + weightOfTotalFloor
+				+ ", weightOfYearsOfConstruction=" + weightOfYearsOfConstruction + ", weightOfInsurance="
+				+ weightOfInsurance + ", weightOfParkingLot=" + weightOfParkingLot + ", weightOfGoIn=" + weightOfGoIn
+				+ ", weightOfTransactionForm=" + weightOfTransactionForm + ", weightOfCondition=" + weightOfCondition
 				+ ", weightOfTotalNumberOfApartments=" + weightOfTotalNumberOfApartments + "]";
 	}
 }
