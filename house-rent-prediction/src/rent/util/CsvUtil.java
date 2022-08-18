@@ -49,7 +49,7 @@ public class CsvUtil {
 			System.out.println("Error");
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.out.println(e);
+			e.printStackTrace();
 		}
 		return dataHouseList;
 	}
@@ -66,7 +66,7 @@ public class CsvUtil {
 			reader.skip(1);
 			String[] nextLine;
 			while ((nextLine = reader.readNext()) != null) {
-				System.out.println(Arrays.toString(nextLine));
+				// System.out.println(Arrays.toString(nextLine));
 				PredictModel data = new PredictModel(nextLine[0], nextLine[1]);
 				predictList.add(data);
 			}
@@ -75,13 +75,13 @@ public class CsvUtil {
 			System.out.println("Error");
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.out.println(e);
+			e.printStackTrace();
 		}
 		return predictList;
 	}
 
 	public void writeDataToCsv(List<PredictModel> dataPredictList) {
-		File file = new File("predict.csv");
+		File file = new File("house-rent-prediction/predict.csv");
 		try (CSVWriter writer = new CSVWriter(new FileWriter(file))) {
 			// create file if not exists
 			if (!file.exists()) {
@@ -99,6 +99,30 @@ public class CsvUtil {
 
 	}
 
+	public void writeDataToHouseCsv(List<HouseDataModel> dataPredictList) {
+		File file = new File("data.csv");
+		try (CSVWriter writer = new CSVWriter(new FileWriter(file))) {
+			// create file if not exists
+			if (!file.exists()) {
+				file.createNewFile();
+			}
+			// write integers
+			writer.writeNext(new String[] { "1", "2", "3", "4", "5", "6", "7" });
+			for (HouseDataModel predictModel : dataPredictList) {
+				writer.writeNext(new String[] {""+predictModel.getTimeToStation(),
+				""+predictModel.getStructureAndDesign(), ""+predictModel.getTotalUsableArea(),
+				""+predictModel.getNumberOfYearsSinceConstruction(),
+				""+predictModel.getFloor(),
+				""+predictModel.getKindsOfHouse(),
+				""+predictModel.getFeaturesAndEquipment() });
+			}
+			System.out.println("File written successfully.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		}
+	
+
 	public HouseDataModel convertCsvToModel(HouseCsvModel csv) {
 		HouseDataModel data = new HouseDataModel();
 		// ID
@@ -108,22 +132,22 @@ public class CsvUtil {
 		// data.setAddress(1);
 
 		// Time to station
-		final String regex = "\\d+";
+		final String regex = "\\d+分";
 		final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
 		final Matcher matcher = pattern.matcher(csv.getTimeToStation());
 		long min = 0;
 		int count = 0;
 		while (matcher.find()) {
 			// min += Integer.parseInt(matcher.group(0));
+			int minute = Integer.parseInt(matcher.group(0).replace("分", ""));
 			if (count == 0) {
-				min = Integer.parseInt(matcher.group(0));
+				min = minute;
 			} else {
-				long temp = Integer.parseInt(matcher.group(0));
-				if (temp < min) {
-					min = temp;
+				if (minute < min) {
+					min = minute;
 				}
 			}
-//			count++;
+			count++;
 		}
 
 		data.setTimeToStation(300.0 * 300.0/min);
@@ -175,7 +199,7 @@ public class CsvUtil {
 		}
 
 		// featuresAndEquipment
-		data.setFeaturesAndEquipment(1500 * csv.getFeaturesAndEquipment().split(Constant.COMMA_FULLSIZE).length);
+		data.setFeaturesAndEquipment(1000 * csv.getFeaturesAndEquipment().split(Constant.COMMA_FULLSIZE).length);
 
 		return data;
 	}
