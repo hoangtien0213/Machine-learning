@@ -49,7 +49,7 @@ public class PredictUtil {
 		int n = houseDataList.size();
 		double sum_error = 0;
 		for (int i = 0; i < n; i++) {
-			System.out.println("Predict:"+i+ " " + predict(houseDataList.get(i), weight));
+			// System.out.println("Predict:"+i+ " " + predict(houseDataList.get(i), weight));
 			double cost = Double.parseDouble(result.get(i).getCost()) - predict(houseDataList.get(i), weight);
 			sum_error += Math.pow(cost, 2);
 		}
@@ -118,7 +118,7 @@ public class PredictUtil {
 			cost_his.add(String.valueOf(cost));
 		}
 
-		System.out.println(cost_his.toString());
+		System.out.println("train: " + cost_his.toString());
 		return weight;
 	}
 }
