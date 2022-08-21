@@ -25,7 +25,7 @@ public class CsvUtil {
 	private static final String regex_number = "(-?\\d+(\\.\\d+)?)|(-?\\d+)";
 
 	public List<HouseDataModel> readDataFromCsv(String fileName) {
-		List<HouseDataModel> dataHouseList = new ArrayList<HouseDataModel>();
+	    	List<HouseDataModel> dataHouseList = new ArrayList<HouseDataModel>();
 		Path path1 = Paths.get(fileName);
 
 		File file = new File(path1.toUri());
@@ -81,7 +81,7 @@ public class CsvUtil {
 	}
 
 	public void writeDataToCsv(List<PredictModel> dataPredictList) {
-		File file = new File("house-rent-prediction/predict.csv");
+		File file = new File("predict.csv");
 		try (CSVWriter writer = new CSVWriter(new FileWriter(file))) {
 			// create file if not exists
 			if (!file.exists()) {
@@ -129,17 +129,33 @@ public class CsvUtil {
 		data.setId(csv.getId());
 
 		// Address
-		// data.setAddress(1);
+		// https://xkld.thanhgiang.com.vn/kanto/
+		// https://vietmartjp.com/binh-quan-gia-thue-nha-tai-nhat/
+		if (csv.getAddress().contains("東京都")) {
+		    data.setAddress(19.12);
+		} else if (csv.getAddress().contains("神奈川県")) {
+		    data.setAddress(10.94);
+		} else if (csv.getAddress().contains("千葉県")) {
+		    data.setAddress(7.44);
+		} else if (csv.getAddress().contains("栃木県")) {
+		    data.setAddress(5.97);
+		} else if (csv.getAddress().contains("群馬県")) {
+		    data.setAddress(5.13);
+		} else if (csv.getAddress().contains("埼玉県")) {
+		    data.setAddress(7.83);
+		} else if (csv.getAddress().contains("茨城県")) {
+		    data.setAddress(5.95);
+		}
 
 		// Time to station
-		final String regex = "\\d+分";
+		final String regex = "歩\\d+分";
 		final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
 		final Matcher matcher = pattern.matcher(csv.getTimeToStation());
-		long min = 0;
+		long min = 300 * 300; // Neu data khong co thoi gian di bo thi value = 1
 		int count = 0;
 		while (matcher.find()) {
 			// min += Integer.parseInt(matcher.group(0));
-			int minute = Integer.parseInt(matcher.group(0).replace("分", ""));
+			int minute = Integer.parseInt(this.getNumberIn(matcher.group(0)).get(0));
 			if (count == 0) {
 				min = minute;
 			} else {

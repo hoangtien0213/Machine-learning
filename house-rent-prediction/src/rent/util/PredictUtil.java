@@ -67,12 +67,14 @@ public class PredictUtil {
 	 */
 	public WeightsModel updateWeight(List<HouseDataModel> houseDataList, List<PredictModel> result, WeightsModel weight,
 			double learningRate) {
-		double bias_temp = 0, weightOfTimeToStation_temp = 0, weightOfStructureAndDesign_temp = 0,
+		double bias_temp = 0, weightOfAddress_temp = 0, weightOfTimeToStation_temp = 0, weightOfStructureAndDesign_temp = 0,
 				weightOfTotalUsableArea_temp = 0, weightOfNumberYears_temp = 0, weightOfFloor_temp = 0,
 				weightOfKindsOfHouse_temp = 0, weightOfFeaturesAndEquipment_temp = 0;
 
 		int n = houseDataList.size();
 		for (int i = 0; i < n; i++) {
+		    weightOfAddress_temp += -2 * houseDataList.get(i).getAddress()
+					* (Double.parseDouble(result.get(i).getCost()) - predict(houseDataList.get(i), weight));
 			weightOfTimeToStation_temp += -2 * houseDataList.get(i).getTimeToStation()
 					* (Double.parseDouble(result.get(i).getCost()) - predict(houseDataList.get(i), weight));
 			weightOfStructureAndDesign_temp += -2 * houseDataList.get(i).getStructureAndDesign()
@@ -93,6 +95,7 @@ public class PredictUtil {
 
 		WeightsModel weightNew = new WeightsModel();
 		weightNew.setBias(weight.getBias() - (bias_temp / n) * learningRate);
+		weightNew.setWeightOfAddress(weight.getWeightOfAddress() - (weightOfAddress_temp / n) * learningRate);
 		weightNew.setWeightOfTimeToStation(
 				weight.getWeightOfTimeToStation() - (weightOfTimeToStation_temp / n) * learningRate);
 		weightNew.setWeightOfStructureAndDesign(
@@ -118,7 +121,7 @@ public class PredictUtil {
 			cost_his.add(String.valueOf(cost));
 		}
 
-		System.out.println("train: " + cost_his.toString());
+		System.out.println("train: " + cost_his.get(iter - 3) + ", "+ cost_his.get(iter - 2) +", " + cost_his.get(iter - 1));
 		return weight;
 	}
 }
