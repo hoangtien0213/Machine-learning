@@ -3,6 +3,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+import rent.model.FeatureCount;
 import rent.model.HouseCsvModel;
 import rent.model.HouseDataModel;
 import rent.model.PredictModel;
@@ -45,7 +46,7 @@ public class HouseRentPredict {
 		
 		
 		// Count feature
-		HashMap<String, Integer> featureMap = csvUtil.getCountFeauter("count_feature.csv");
+		HashMap<String, FeatureCount> featureMap = csvUtil.getCountFeauter("count_feature_copy_1.csv");
 		csvUtil.writeDataFeatureCount(featureMap);
 		
 	}

@@ -17,6 +17,7 @@ import java.util.regex.Pattern;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 
+import rent.model.FeatureCount;
 import rent.model.HouseCsvModel;
 import rent.model.HouseDataModel;
 import rent.model.PredictModel;
@@ -219,8 +220,8 @@ public class CsvUtil {
 	}
 	
 	// Count feature
-	public HashMap<String, Integer> getCountFeauter(String fileName) {
-		HashMap<String, Integer> dataHouseList = new HashMap<String, Integer>();
+	public HashMap<String, FeatureCount> getCountFeauter(String fileName) {
+		HashMap<String, FeatureCount> dataHouseList = new HashMap<String, FeatureCount>();
 		Path path1 = Paths.get(fileName);
 
 		File file = new File(path1.toUri());
@@ -230,6 +231,7 @@ public class CsvUtil {
 			CSVReader reader = new CSVReader(csvStreamReader);
 			reader.skip(1);
 			String[] nextLine;
+			int count =0;
 			while ((nextLine = reader.readNext()) != null) {
 //			System.out.println(Arrays.toString(nextLine));
 				HouseCsvModel data = new HouseCsvModel(nextLine[0], nextLine[1], nextLine[2], nextLine[3], nextLine[4],
@@ -240,13 +242,16 @@ public class CsvUtil {
 				String[] listFeature = data.getFeaturesAndEquipment().split(Constant.COMMA_FULLSIZE);
 				for (String string : listFeature) {
 					if (!dataHouseList.containsKey(string)) {
-						dataHouseList.put(string, 1);
+						dataHouseList.put(string, new FeatureCount(1,data.getRemark()));
 					}else {
-						dataHouseList.computeIfPresent(string, (k, v) -> v + 1);
+						List<String> listCount = dataHouseList.get(string).getCost();
+						listCount.add(data.getRemark());
+						dataHouseList.computeIfPresent(string, (k, v) -> new FeatureCount(v.getCount()+1,listCount));
 					}
-
 				}
+				count++;
 			}
+			System.out.println("Record: "+count);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 			System.out.println("Error");
@@ -258,17 +263,17 @@ public class CsvUtil {
 	}
 	
 	// Count feature
-	public void writeDataFeatureCount(HashMap<String, Integer> dataHouseList) {
-		File file = new File("count.csv");
+	public void writeDataFeatureCount(HashMap<String, FeatureCount> dataHouseList) {
+		File file = new File("count_all.csv");
 		try (CSVWriter writer = new CSVWriter(new FileWriter(file))) {
 			// create file if not exists
 			if (!file.exists()) {
 				file.createNewFile();
 			}
 			// write integers
-			writer.writeNext(new String[] { "Key", "Count" });
-			for (HashMap.Entry<String, Integer> entry : dataHouseList.entrySet()) {
-				String[] writerValue = {entry.getKey(),entry.getValue().toString()};
+			writer.writeNext(new String[] { "Key", "Count","Cost" });
+			for (HashMap.Entry<String, FeatureCount> entry : dataHouseList.entrySet()) {
+				String[] writerValue = {entry.getKey(),String.valueOf(entry.getValue().getCount()),entry.getValue().getCost().toString()};
 				writer.writeNext(writerValue);
 			}
 			System.out.println("File written successfully.");
